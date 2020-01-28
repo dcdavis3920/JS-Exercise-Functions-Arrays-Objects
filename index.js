@@ -202,8 +202,19 @@ function getCarInfoById(inventory, index) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
  */
-function sortCarInventory( /* code here */ ) {
-    /* code here */
+function sortCarInventory(inventory) {
+    for (let i = 0; i < inventory.length; i++) {
+        inventory.sort(function(a, b) {
+            if (a.car_modei > b.car_model) {
+                return 1;
+            }
+            if (a.car_model < b.car_model) {
+                return -1;
+            }
+            return 0;
+        });
+        return inventory;
+    }
 }
 
 /**
@@ -215,7 +226,7 @@ function sortCarInventory( /* code here */ ) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
  */
-function getModelYears( /* code here */ ) {
+function getModelYears() {
     /* code here */
 }
 
@@ -231,8 +242,15 @@ function getModelYears( /* code here */ ) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
  */
-function getOlderCars( /* code here */ ) {
-    /* code here */
+function getOlderCars(inventory, years) {
+    let olderCars = [];
+    for (let i = 0; i < inventory.length; i++) {
+        if (inventory[i]['car_year'] <= years) {
+            olderCars.push(inventory[i]);
+        }
+
+    }
+    return olderCars;
 }
 
 /**
@@ -249,7 +267,7 @@ function getOlderCars( /* code here */ ) {
 function getGermanCars(arr) {
     let newArr = [];
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagon" || arr[i].car_make === "BMW") {
+        if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagen" || arr[i].car_make === "BMW") {
 
             newArr.push(arr[i]);
         }
