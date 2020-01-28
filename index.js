@@ -186,8 +186,12 @@ function getLastCarInfo(inventory) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
  */
-function getCarInfoById( /* code here */ ) {
-    /* code here */
+function getCarInfoById(inventory, index) {
+    for (let i = 0; i < inventory.length; i++) {
+        if (inventory[i].id === index) {
+            return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`;
+        }
+    }
 }
 
 /**
@@ -242,8 +246,17 @@ function getOlderCars( /* code here */ ) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
  */
-function getGermanCars( /* code here */ ) {
-    /* code here */
+function getGermanCars(arr) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagon" || arr[i].car_make === "BMW") {
+
+            newArr.push(arr[i]);
+        }
+
+
+    }
+    return newArr;
 }
 
 /**
@@ -252,22 +265,23 @@ function getGermanCars( /* code here */ ) {
  * @instructions
  * Create arrow function versions of the following commented-out functions:
  * 
- * const sum = function (a, b) {
+ * const sum =  (a, b)=>{
  *   return a + b
  * }
  * 
- * const addFive = function(num) {
+ * const addFive = (num)=> {
  *    return num + 5
  * }
  *
- * const argTimesTwo = function (num) {
+ * const argTimesTwo = (num)=>{
  *   return num * 2
  * }
  */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a, b) => { a + b };
 
+const addFive = (num) => { num + 5 };
+
+const argTimesTwo = num => { num * 2 };
 /**
  * ### Challenge `carMaker`
  * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
